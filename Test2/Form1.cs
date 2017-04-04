@@ -34,7 +34,10 @@ namespace Test2
 
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
-            IWebElement[] el = new IWebElement[4];
+
+            
+            //IWebElement[] el = new IWebElement[4];
+            //IWebElement element;
             /*el[3] = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
             el[2] = Browser.FindElement(By.CssSelector("div.graphs-support a"));
             el[1] = Browser.FindElement(By.CssSelector("div.graphs-details a"));
@@ -45,17 +48,17 @@ namespace Test2
             el[2] = Browser.FindElement(By.ClassName("graphs-support"));
             el[3] = Browser.FindElement(By.ClassName("graphs-files"));*/
 
-            el[0] = Browser.FindElement(By.PartialLinkText("СОПРОВ")); el[0].Click();
-            el[1] = Browser.FindElement(By.PartialLinkText("ВНИК")); el[1].Click();
-            el[2] = Browser.FindElement(By.PartialLinkText("НАХ")); el[2].Click();
-            el[3] = Browser.FindElement(By.PartialLinkText("ФАЙЛ")); el[3].Click();
+            /*element = Browser.FindElement(By.PartialLinkText("СОПРОВ"));
+            element = Browser.FindElement(By.PartialLinkText("ВНИК"));
+            element = Browser.FindElement(By.PartialLinkText("НАХ"));
+            element = Browser.FindElement(By.PartialLinkText("ФАЙЛ"));*/
 
-            for (int i=0; i==100; i++) {
+            /*for (int i=0; i==100; i++) {
                 for (int z=0; z<4; z++) {
                     el[z].Click();
                     //System.Threading.Thread.Sleep(500);
                 }
-            }
+            }*/
         }
 
         private void button3_Click(object sender, EventArgs e) //Выход
