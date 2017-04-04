@@ -35,15 +35,20 @@ namespace Test2
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
             IWebElement[] el = new IWebElement[4];
-            el[3] = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
+            /*el[3] = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
             el[2] = Browser.FindElement(By.CssSelector("div.graphs-support a"));
             el[1] = Browser.FindElement(By.CssSelector("div.graphs-details a"));
-            el[0] = Browser.FindElement(By.CssSelector("div.graphs-files a"));
+            el[0] = Browser.FindElement(By.CssSelector("div.graphs-files a"));*/
 
             /*el[0] = Browser.FindElement(By.ClassName("graphs-details"));
             el[1] = Browser.FindElement(By.ClassName("graphs-errors"));
             el[2] = Browser.FindElement(By.ClassName("graphs-support"));
             el[3] = Browser.FindElement(By.ClassName("graphs-files"));*/
+
+            el[0] = Browser.FindElement(By.PartialLinkText("СОПРОВ")); el[0].Click();
+            el[1] = Browser.FindElement(By.PartialLinkText("ВНИК")); el[1].Click();
+            el[2] = Browser.FindElement(By.PartialLinkText("НАХ")); el[2].Click();
+            el[3] = Browser.FindElement(By.PartialLinkText("ФАЙЛ")); el[3].Click();
 
             for (int i=0; i==100; i++) {
                 for (int z=0; z<4; z++) {
@@ -61,7 +66,7 @@ namespace Test2
             //element = Browser.FindElement(By.PartialLinkText("vk.com"));
 
 
-            //element = Browser.FindElement(By.CssSelector("a[href*=""]")); element.Click();
+            element = Browser.FindElement(By.PartialLinkText("СОПРОВ")); element.Click();
             
             
             /*element = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
