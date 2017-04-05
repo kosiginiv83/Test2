@@ -64,11 +64,24 @@ namespace Test2
         private void button3_Click(object sender, EventArgs e) //Выход
         {
             //Application.Exit();
+
             IWebElement element;
             //element = Browser.FindElement(By.PartialLinkText("НАХОДИТЬ"));
-            //element = Browser.FindElement(By.PartialLinkText("vk.com"));
+            element = Browser.FindElement(By.PartialLinkText("vk.com"));
+            element.Click();
 
-
+            /*
+            element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[1]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[2]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[3]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[4]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            */
+            /*
+            element = Browser.FindElement(By.CssSelector("div.graphs-details.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            element = Browser.FindElement(By.CssSelector("div.graphs-errors.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            element = Browser.FindElement(By.CssSelector("div.graphs-support.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            element = Browser.FindElement(By.CssSelector("div.graphs-files.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
+            */
 
             //selector1// body > div.wrap > section.requirements > section > div.graphs - details.graph - active > a
             //selector2// body > div.wrap > section.requirements > section > div.graphs - errors.graph - active > a
@@ -84,7 +97,7 @@ namespace Test2
             body > div.wrap > section.requirements > section > div.graphs - support > a
             body > div.wrap > section.requirements > section > div.graphs - files > a
             */
-            
+
             /*element = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
             element.Click();
             System.Threading.Thread.Sleep(1000);
@@ -98,5 +111,10 @@ namespace Test2
             element.Click();
             System.Threading.Thread.Sleep(1000);*/
         }
+
+        private static void NM(IWebElement element) {
+
+        }
+
     }
 }
