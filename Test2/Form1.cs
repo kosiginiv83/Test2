@@ -35,7 +35,7 @@ namespace Test2
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
 
-            
+            afadf
             //IWebElement[] el = new IWebElement[4];
             //IWebElement element;
             /*el[3] = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
