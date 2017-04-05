@@ -35,7 +35,7 @@ namespace Test2
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
 
-            afadf
+            
             //IWebElement[] el = new IWebElement[4];
             //IWebElement element;
             /*el[3] = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
@@ -69,8 +69,21 @@ namespace Test2
             //element = Browser.FindElement(By.PartialLinkText("vk.com"));
 
 
-            element = Browser.FindElement(By.PartialLinkText("СОПРОВ")); element.Click();
-            
+
+            //selector1// body > div.wrap > section.requirements > section > div.graphs - details.graph - active > a
+            //selector2// body > div.wrap > section.requirements > section > div.graphs - errors.graph - active > a
+            //selector3// body > div.wrap > section.requirements > section > div.graphs - support.graph - active > a
+            //selector4// body > div.wrap > section.requirements > section > div.graphs - files.graph - active > a
+            //xpath1// / html / body / div[1] / section[1] / section / div[1] / a
+            //xpath2// / html / body / div[1] / section[1] / section / div[2] / a
+            //xpath3// / html / body / div[1] / section[1] / section / div[3] / a
+            //xpath4// / html / body / div[1] / section[1] / section / div[4] / a
+            /*
+            body > div.wrap > section.requirements > section > div.graphs - details > a
+            body > div.wrap > section.requirements > section > div.graphs - errors > a
+            body > div.wrap > section.requirements > section > div.graphs - support > a
+            body > div.wrap > section.requirements > section > div.graphs - files > a
+            */
             
             /*element = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
             element.Click();
