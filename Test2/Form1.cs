@@ -38,17 +38,27 @@ namespace Test2
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
             IWebElement element;
+            IWebElement[] el = new IWebElement[3];
             element = Browser.FindElement(By.Id("gs_ok0"));
             element.Click();
             System.Threading.Thread.Sleep(3000);
-            element = Browser.FindElement(By.Id("K65")); element.Click();
-            element = Browser.FindElement(By.Id("K70")); element.Click();
-            element = Browser.FindElement(By.Id("K82")); element.Click();
+            el[0] = Browser.FindElement(By.Id("K65")); //element.Click();
+            el[1] = Browser.FindElement(By.Id("K70")); //element.Click();
+            el[2] = Browser.FindElement(By.Id("K82")); //element.Click();
             //SendKeys.Send("ENTER");
-            element.SendKeys(OpenQA.Selenium.Keys.Enter);
+            //element.SendKeys(OpenQA.Selenium.Keys.Enter);
+
+            for (int i = 0; i == 10; i++)
+            {
+                for (int z = 0; z < 3; z++)
+                {
+                    el[z].Click();
+                    System.Threading.Thread.Sleep(100);
+                }
+            }
 
 
-            //IWebElement[] el = new IWebElement[4];
+            //IWebElement[] el = new IWebElement[3];
             //IWebElement element;
             /*el[3] = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
             el[2] = Browser.FindElement(By.CssSelector("div.graphs-support a"));
@@ -65,13 +75,13 @@ namespace Test2
             element = Browser.FindElement(By.PartialLinkText("НАХ"));
             element = Browser.FindElement(By.PartialLinkText("ФАЙЛ"));*/
 
-            /*for (int i=0; i==100; i++) {
-                for (int z=0; z<4; z++) {
+            /*for (int i=0; i==10; i++) {
+                for (int z=0; z<3; z++) {
                     el[z].Click();
                     //System.Threading.Thread.Sleep(500);
                 }
             }*/
-        }
+        } 
 
         private void button3_Click(object sender, EventArgs e) //Выход
         {
