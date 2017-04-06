@@ -38,24 +38,25 @@ namespace Test2
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
             IWebElement element;
-            IWebElement[] el = new IWebElement[3];
-            element = Browser.FindElement(By.Id("gs_ok0"));
-            element.Click();
-            System.Threading.Thread.Sleep(3000);
-            el[0] = Browser.FindElement(By.Id("K65")); //element.Click();
-            el[1] = Browser.FindElement(By.Id("K70")); //element.Click();
-            el[2] = Browser.FindElement(By.Id("K82")); //element.Click();
-            //SendKeys.Send("ENTER");
-            //element.SendKeys(OpenQA.Selenium.Keys.Enter);
+            //IWebElement[] el = new IWebElement[3];
+            element = Browser.FindElement(By.Id("gs_ok0")); element.Click();
+            //System.Threading.Thread.Sleep(3000);
+            WebDriverWait ww = new WebDriverWait(Browser, TimeSpan.FromSeconds(10));
+            IWebElement txt = ww.Until(ExpectedConditions.ElementIsVisible(By.Id("kbd")));
+            element = Browser.FindElement(By.Id("K65")); element.Click();
+            element = Browser.FindElement(By.Id("K70")); element.Click();
+            element = Browser.FindElement(By.Id("K82")); element.Click();
+            element = Browser.FindElement(By.Id("lst-ib"));
+            element.SendKeys(OpenQA.Selenium.Keys.Enter);
+            element = Browser.FindElement(By.CssSelector("#kbd > div:nth-child(1) > div.vk-t-btns > div > div")); element.Click();
+            System.Windows.Forms.MessageBox.Show("Выполнено");
+            Browser.Quit();
+            Application.Exit();
+            //#kbd > div:nth-child(1) > div.vk-t-btns > div > div
+            //SearchInput.SendKeys("selenium" + OpenQA.Selenium.Keys.Enter);
 
-            for (int i = 0; i == 10; i++)
-            {
-                for (int z = 0; z < 3; z++)
-                {
-                    el[z].Click();
-                    System.Threading.Thread.Sleep(100);
-                }
-            }
+            //WebDriverWait ww = new WebDriverWait(Browser, TimeSpan.FromSeconds(10));
+            //IWebElement txt = ww.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("#result p")));
 
 
             //IWebElement[] el = new IWebElement[3];
@@ -81,7 +82,7 @@ namespace Test2
                     //System.Threading.Thread.Sleep(500);
                 }
             }*/
-        } 
+        }
 
         private void button3_Click(object sender, EventArgs e) //Выход
         {
