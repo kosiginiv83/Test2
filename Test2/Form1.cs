@@ -86,6 +86,16 @@ namespace Test2
 
         private void button3_Click(object sender, EventArgs e) //Выход
         {
+
+            //WebElement element = (WebElement) js.executeScript("return jQuery.find('#hplogo');");
+            IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+            jse.ExecuteScript("alert('Тест JavaScript')");
+            System.Threading.Thread.Sleep(1000);
+            //jse.ExecuteScript(textBox1.Text);
+            jse.ExecuteScript("$ ( '#hplogo' ).hide()"); // $("#hplogo").hide("slow");
+            System.Threading.Thread.Sleep(1000);
+            //$("#hplogo").show("slow");
+            System.Threading.Thread.Sleep(1000);
             Browser.Quit();
             Application.Exit();
 
