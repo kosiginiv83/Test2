@@ -81,6 +81,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="packages\nu\Selenium.Support" />
+    <None Include="packages\nu\Selenium.WebDriver" />
+    <None Include="packages\nu\Selenium.WebDriverBackedSelenium" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -98,8 +101,10 @@
     <Content Include="chromedriver-license.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="packages\nu\Selenium.RC" />
     <Content Include="packages\WebDriverChromeDriver.2.10\tools\chromedriver.exe" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
