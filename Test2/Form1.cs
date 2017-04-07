@@ -55,14 +55,27 @@ namespace Test2
         private void button3_Click(object sender, EventArgs e) //Выход
         {
 
+
+
+            /*
+            IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+            jse.ExecuteScript("$('.input__box i').click();");
+            */
+            /*
+            IWebElement element;
+            element = Browser.FindElement(By.CssSelector(".input__box i")); element.Click(); //Для Yandex
+            */
+
+            /*
             IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
             //jse.ExecuteScript("alert('Тест JavaScript')");
             //System.Threading.Thread.Sleep(1000);
-            
             jse.ExecuteScript("$('.home-logo__default').hide('slow')"); //Для Yandex
             System.Threading.Thread.Sleep(500);
             jse.ExecuteScript("$('.home-logo__default').show('slow')"); //Для Yandex
             System.Threading.Thread.Sleep(500);
+            */
+
             //Browser.Quit();
             //Application.Exit();
 
