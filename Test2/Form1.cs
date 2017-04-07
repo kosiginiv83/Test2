@@ -26,9 +26,9 @@ namespace Test2
         {
             Browser = new OpenQA.Selenium.Chrome.ChromeDriver();
 
-            //Browser.Navigate().GoToUrl("http://blog.csssr.ru/qa-engineer/");
+            Browser.Navigate().GoToUrl("http://blog.csssr.ru/qa-engineer/");
             //Browser.Navigate().GoToUrl("https://google.com");
-            Browser.Navigate().GoToUrl("https://www.yandex.ru");
+            //Browser.Navigate().GoToUrl("https://www.yandex.ru");
         
             //Browser.Manage().Window.Maximize();
         }
@@ -54,8 +54,16 @@ namespace Test2
 
         private void button3_Click(object sender, EventArgs e) //Выход
         {
-
-
+            IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+            int i = 0, x = 0;
+            while (i < 100)
+            {
+                while (x < 5) { jse.ExecuteScript("$('.graphs-details > a').click();"); x++; } x = 0;
+                while (x < 5) { jse.ExecuteScript("$('.graphs-errors > a').click();"); x++; } x = 0;
+                while (x < 5) { jse.ExecuteScript("$('.graphs-support > a').click();"); x++; }  x = 0;
+                while (x < 5) { jse.ExecuteScript("$('.graphs-files > a').click();"); x++; } x = 0;
+                i++;
+            }
 
             /*
             IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
