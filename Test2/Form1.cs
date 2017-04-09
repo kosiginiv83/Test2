@@ -10,12 +10,18 @@ using System.Windows.Forms;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
+using System.IO;
+using System.Web;
+using OpenQA.Selenium.Support.Events;
+using OpenQA.Selenium.Support.Extensions;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace Test2
 {
     public partial class Form1 : Form
     {
-        public IWebDriver Browser;
+        public IWebDriver Browser; public int x; public int y;
 
         public Form1()
         {
@@ -46,7 +52,7 @@ namespace Test2
             element = Browser.FindElement(By.Id("lst-ib")); //Для Google
             element.SendKeys(OpenQA.Selenium.Keys.Enter);
             element = Browser.FindElement(By.CssSelector("#kbd > div:nth-child(1) > div.vk-t-btns > div > div")); element.Click(); //Для Google
-            System.Windows.Forms.MessageBox.Show("Выполнено");
+            MessageBox.Show("Выполнено");
             Browser.Quit();
             Application.Exit();
 
@@ -54,16 +60,49 @@ namespace Test2
 
         private void button3_Click(object sender, EventArgs e) //Выход
         {
-            IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+
+            /*IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
             int i = 0, x = 0;
-            while (i < 100)
+            while (i < 10)
             {
-                while (x < 5) { jse.ExecuteScript("$('.graphs-details > a').click();"); x++; } x = 0;
-                while (x < 5) { jse.ExecuteScript("$('.graphs-errors > a').click();"); x++; } x = 0;
-                while (x < 5) { jse.ExecuteScript("$('.graphs-support > a').click();"); x++; }  x = 0;
-                while (x < 5) { jse.ExecuteScript("$('.graphs-files > a').click();"); x++; } x = 0;
+                while (x < 3) { jse.ExecuteScript("$('.graphs-details > a').click();"); x++; } x = 0;
+                while (x < 3) { jse.ExecuteScript("$('.graphs-errors > a').click();"); x++; } x = 0;
+                while (x < 3) { jse.ExecuteScript("$('.graphs-support > a').click();"); x++; }  x = 0;
+                while (x < 3) { jse.ExecuteScript("$('.graphs-files > a').click();"); x++; } x = 0;
                 i++;
             }
+            */
+
+            IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+            jse.ExecuteScript("$('html')");
+            for (x = 1; x <= 3204; x++)
+            {
+                for (y = 1; y <= 1940; y++)
+                {
+                    string str = "(document.elementFromPoint(" + x + ", " + y + "))";
+                    //MessageBox.Show(str);
+                    string str2 = "$" + str + ".click();";
+                    //MessageBox.Show(str2);
+                    jse.ExecuteScript(str2);
+                    MessageBox.Show(str2);
+                    if (x == 500 & y == 1500) MessageBox.Show("x=500, y=1500");
+                    else if (x == 2500 & y == 1900) MessageBox.Show("x=2500, y=1900");
+                    else if (x == 3204 & y == 1940) { MessageBox.Show("All"); Browser.Quit(); Application.Exit(); }
+                    }
+                }
+
+
+            /*
+            Actions builder = new Actions(Browser);
+                    builder.MoveToElement(jse, x, y).Click();
+                    //builder.Click();
+            */
+
+            /*
+            IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+            //IJavaScriptExecutor jse = (IJavaScriptExecutor)Browser;
+            jse.ExecuteScript("$(document.elementFromPoint(x, y)).click();");
+            */
 
             /*
             IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
@@ -96,6 +135,8 @@ namespace Test2
 //IWebElement[] el = new IWebElement[3];
 //WebElement element = (WebElement) js.executeScript("return jQuery.find('#hplogo');");
 //jse.ExecuteScript(textBox1.Text);
+
+//MessageBox.Show(s.ToString());
 
 //#kbd > div:nth-child(1) > div.vk-t-btns > div > div
 //SearchInput.SendKeys("selenium" + OpenQA.Selenium.Keys.Enter);
