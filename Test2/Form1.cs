@@ -33,11 +33,15 @@ namespace Test2
             Browser = new OpenQA.Selenium.Chrome.ChromeDriver();
 
             Browser.Navigate().GoToUrl("http://blog.csssr.ru/qa-engineer/");
-            //Browser.Navigate().GoToUrl("https://google.com");
-            //Browser.Navigate().GoToUrl("https://www.yandex.ru");
-        
-            //Browser.Manage().Window.Maximize();
-        }
+			//Browser.Navigate().GoToUrl("https://google.com");
+			//Browser.Navigate().GoToUrl("https://www.yandex.ru");
+
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			jse.ExecuteScript("$(a:not(.requirements)");
+			//Browser.Manage().Window.Maximize();
+			//jse.ExecuteScript("$('a:not(.requirements)').css('hidden', 'no')");
+			// $("a[href*='news.yandex.ru']").css('color', 'green');
+		}
 
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
@@ -60,7 +64,24 @@ namespace Test2
 
         private void button3_Click(object sender, EventArgs e) //Выход
         {
-			
+
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			jse.ExecuteScript("$('html')");
+			for (x = 1; x <= 3204; x++)
+			{
+				for (y = 1; y <= 1940; y++)
+				{
+					string str = "(document.elementFromPoint(" + x + ", " + y + "))";
+					//MessageBox.Show(str);
+					string str2 = "$" + str + ".click();";
+					//MessageBox.Show(str2);
+					jse.ExecuteScript(str2);
+					//MessageBox.Show(str2);
+					if (x == 500 & y == 1500) MessageBox.Show("x=500, y=1500");
+					else if (x == 2500 & y == 1900) MessageBox.Show("x=2500, y=1900");
+					else if (x == 3204 & y == 1940) { MessageBox.Show("All"); Browser.Quit(); Application.Exit(); }
+				}
+			}
 
 			/*
             IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
@@ -75,59 +96,59 @@ namespace Test2
             }
             */
 
-				/*
-				IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-				jse.ExecuteScript("$('html')");
-				for (x = 1; x <= 3204; x++)
+			/*
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			jse.ExecuteScript("$('html')");
+			for (x = 1; x <= 3204; x++)
+			{
+				for (y = 1; y <= 1940; y++)
 				{
-					for (y = 1; y <= 1940; y++)
-					{
-						string str = "(document.elementFromPoint(" + x + ", " + y + "))";
-						//MessageBox.Show(str);
-						string str2 = "$" + str + ".click();";
-						//MessageBox.Show(str2);
-						jse.ExecuteScript(str2);
-						//MessageBox.Show(str2);
-						if (x == 500 & y == 1500) MessageBox.Show("x=500, y=1500");
-						else if (x == 2500 & y == 1900) MessageBox.Show("x=2500, y=1900");
-						else if (x == 3204 & y == 1940) { MessageBox.Show("All"); Browser.Quit(); Application.Exit(); }
-					}
+					string str = "(document.elementFromPoint(" + x + ", " + y + "))";
+					//MessageBox.Show(str);
+					string str2 = "$" + str + ".click();";
+					//MessageBox.Show(str2);
+					jse.ExecuteScript(str2);
+					//MessageBox.Show(str2);
+					if (x == 500 & y == 1500) MessageBox.Show("x=500, y=1500");
+					else if (x == 2500 & y == 1900) MessageBox.Show("x=2500, y=1900");
+					else if (x == 3204 & y == 1940) { MessageBox.Show("All"); Browser.Quit(); Application.Exit(); }
 				}
-				*/
+			}
+			*/
 
-				/*
-				Actions builder = new Actions(Browser);
-						builder.MoveToElement(jse, x, y).Click();
-						//builder.Click();
-				*/
+			/*
+			Actions builder = new Actions(Browser);
+					builder.MoveToElement(jse, x, y).Click();
+					//builder.Click();
+			*/
 
-				/*
-				IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-				//IJavaScriptExecutor jse = (IJavaScriptExecutor)Browser;
-				jse.ExecuteScript("$(document.elementFromPoint(x, y)).click();");
-				*/
+			/*
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			//IJavaScriptExecutor jse = (IJavaScriptExecutor)Browser;
+			jse.ExecuteScript("$(document.elementFromPoint(x, y)).click();");
+			*/
 
-				/*
-				IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-				jse.ExecuteScript("$('.input__box i').click();");
-				*/
-				/*
-				IWebElement element;
-				element = Browser.FindElement(By.CssSelector(".input__box i")); element.Click(); //Для Yandex
-				*/
+			/*
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			jse.ExecuteScript("$('.input__box i').click();");
+			*/
+			/*
+			IWebElement element;
+			element = Browser.FindElement(By.CssSelector(".input__box i")); element.Click(); //Для Yandex
+			*/
 
-				/*
-				IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-				//jse.ExecuteScript("alert('Тест JavaScript')");
-				//System.Threading.Thread.Sleep(1000);
-				jse.ExecuteScript("$('.home-logo__default').hide('slow')"); //Для Yandex
-				System.Threading.Thread.Sleep(500);
-				jse.ExecuteScript("$('.home-logo__default').show('slow')"); //Для Yandex
-				System.Threading.Thread.Sleep(500);
-				*/
+			/*
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			//jse.ExecuteScript("alert('Тест JavaScript')");
+			//System.Threading.Thread.Sleep(1000);
+			jse.ExecuteScript("$('.home-logo__default').hide('slow')"); //Для Yandex
+			System.Threading.Thread.Sleep(500);
+			jse.ExecuteScript("$('.home-logo__default').show('slow')"); //Для Yandex
+			System.Threading.Thread.Sleep(500);
+			*/
 
-				//Browser.Quit();
-				//Application.Exit();
+			//Browser.Quit();
+			//Application.Exit();
 
 		}
     }
