@@ -37,7 +37,11 @@ namespace Test2
 			//Browser.Navigate().GoToUrl("https://www.yandex.ru");
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-			jse.ExecuteScript("$(a:not(.requirements)");
+            jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});");
+			
+            // $('section.graphs a').css('color', 'green'); //Работает
+            //jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});"); //Работает
+            //jse.ExecuteScript("$(a:not(.requirements)");
 			//Browser.Manage().Window.Maximize();
 			//jse.ExecuteScript("$('a:not(.requirements)').css('hidden', 'no')");
 			// $("a[href*='news.yandex.ru']").css('color', 'green');
@@ -46,7 +50,7 @@ namespace Test2
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
             IWebElement element;
-            element = Browser.FindElement(By.Id("gs_ok0")); element.Click();
+            element = Browser.FindElement(By.Id("gs_ok0")); element.Click(); //Для Google
             //System.Threading.Thread.Sleep(3000);
             WebDriverWait ww = new WebDriverWait(Browser, TimeSpan.FromSeconds(10));
             IWebElement txt = ww.Until(ExpectedConditions.ElementIsVisible(By.Id("kbd"))); //Для Google
