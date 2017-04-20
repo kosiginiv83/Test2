@@ -37,11 +37,14 @@ namespace Test2
 			//Browser.Navigate().GoToUrl("https://www.yandex.ru");
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-            jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});");
+            jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});");
 			
+			//jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает (отключает ссылки) 
+			//jse.ExecuteScript("$('a:not(section.graphs a)').each(function(i) {$(this).css('color', 'green')});"); //Работает
             // $('section.graphs a').css('color', 'green'); //Работает
             //jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});"); //Работает
-            //jse.ExecuteScript("$(a:not(.requirements)");
+            
+			//jse.ExecuteScript("$(a:not(.requirements)");
 			//Browser.Manage().Window.Maximize();
 			//jse.ExecuteScript("$('a:not(.requirements)').css('hidden', 'no')");
 			// $("a[href*='news.yandex.ru']").css('color', 'green');
@@ -70,7 +73,7 @@ namespace Test2
         {
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-			jse.ExecuteScript("$('html')");
+			jse.ExecuteScript("$('html');");
 			for (x = 1; x <= 3204; x++)
 			{
 				for (y = 1; y <= 1940; y++)
