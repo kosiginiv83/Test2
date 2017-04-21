@@ -38,15 +38,15 @@ namespace Test2
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
             jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});");
-			
+			jse.ExecuteScript("$('a:not(section.graphs a)').text('Заблокировано');");
+			jse.ExecuteScript("$('a:not(section.graphs a)').css('background-color', 'red');");
+			IWebElement element;
+			element = Browser.FindElement(By.TagName("body")).SendKeys(Keys.Chord(OpenQA.Selenium.Keys.Ctrl, OpenQA.Selenium.Keys.Plus));
+			//Browser.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.CONTROL, "+"));
 			//jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает (отключает ссылки) 
 			//jse.ExecuteScript("$('a:not(section.graphs a)').each(function(i) {$(this).css('color', 'green')});"); //Работает
             // $('section.graphs a').css('color', 'green'); //Работает
             //jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});"); //Работает
-            
-			//jse.ExecuteScript("$(a:not(.requirements)");
-			//Browser.Manage().Window.Maximize();
-			//jse.ExecuteScript("$('a:not(.requirements)').css('hidden', 'no')");
 			// $("a[href*='news.yandex.ru']").css('color', 'green');
 		}
 
@@ -185,74 +185,3 @@ namespace Test2
 
 //WebDriverWait ww = new WebDriverWait(Browser, TimeSpan.FromSeconds(10));
 //IWebElement txt = ww.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("#result p")));
-
-
-//IWebElement[] el = new IWebElement[3];
-//IWebElement element;
-/*el[3] = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
-el[2] = Browser.FindElement(By.CssSelector("div.graphs-support a"));
-el[1] = Browser.FindElement(By.CssSelector("div.graphs-details a"));
-el[0] = Browser.FindElement(By.CssSelector("div.graphs-files a"));*/
-
-/*el[0] = Browser.FindElement(By.ClassName("graphs-details"));
-el[1] = Browser.FindElement(By.ClassName("graphs-errors"));
-el[2] = Browser.FindElement(By.ClassName("graphs-support"));
-el[3] = Browser.FindElement(By.ClassName("graphs-files"));*/
-
-/*element = Browser.FindElement(By.PartialLinkText("СОПРОВ"));
-element = Browser.FindElement(By.PartialLinkText("ВНИК"));
-element = Browser.FindElement(By.PartialLinkText("НАХ"));
-element = Browser.FindElement(By.PartialLinkText("ФАЙЛ"));*/
-
-/*for (int i=0; i==10; i++) {
-    for (int z=0; z<3; z++) {
-        el[z].Click();
-        //System.Threading.Thread.Sleep(500);
-    }
-}*/
-
-
-//element = Browser.FindElement(By.PartialLinkText("НАХОДИТЬ"));
-//element = Browser.FindElement(By.PartialLinkText("vk.com"));
-//element = Browser.FindElement(By.CssSelector("body > div.wrap > footer > nav > div:nth-child(2) > a"));
-
-/*
-element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[1]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[2]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[3]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.XPath("html/body/div[1]/section[1]/section/div[4]/a")); element.Click(); System.Threading.Thread.Sleep(1000);
-*/
-/*
-element = Browser.FindElement(By.CssSelector("div.graphs-details.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.CssSelector("div.graphs-errors.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.CssSelector("div.graphs-support.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.CssSelector("div.graphs-files.graph-active a")); element.Click(); System.Threading.Thread.Sleep(1000);
-*/
-
-//selector1// body > div.wrap > section.requirements > section > div.graphs - details.graph - active > a
-//selector2// body > div.wrap > section.requirements > section > div.graphs - errors.graph - active > a
-//selector3// body > div.wrap > section.requirements > section > div.graphs - support.graph - active > a
-//selector4// body > div.wrap > section.requirements > section > div.graphs - files.graph - active > a
-//xpath1// / html / body / div[1] / section[1] / section / div[1] / a
-//xpath2// / html / body / div[1] / section[1] / section / div[2] / a
-//xpath3// / html / body / div[1] / section[1] / section / div[3] / a
-//xpath4// / html / body / div[1] / section[1] / section / div[4] / a
-/*
-body > div.wrap > section.requirements > section > div.graphs - details > a
-body > div.wrap > section.requirements > section > div.graphs - errors > a
-body > div.wrap > section.requirements > section > div.graphs - support > a
-body > div.wrap > section.requirements > section > div.graphs - files > a
-*/
-
-/*element = Browser.FindElement(By.CssSelector("div.graphs-errors a"));
-element.Click();
-System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.CssSelector("div.graphs-support a"));
-element.Click();
-System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.CssSelector("div.graphs-details a"));
-element.Click();
-System.Threading.Thread.Sleep(1000);
-element = Browser.FindElement(By.CssSelector("div.graphs-files a"));
-element.Click();
-System.Threading.Thread.Sleep(1000);*/
