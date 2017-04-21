@@ -73,22 +73,16 @@ namespace Test2
         {
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-			jse.ExecuteScript("$('html');");
-			for (x = 1; x <= 3204; x++)
-			{
-				for (y = 1; y <= 1940; y++)
-				{
-					string str = "(document.elementFromPoint(" + x + ", " + y + "))";
-					//MessageBox.Show(str);
-					string str2 = "$" + str + ".click();";
-					//MessageBox.Show(str2);
-					jse.ExecuteScript(str2);
-					//MessageBox.Show(str2);
-					if (x == 500 & y == 1500) MessageBox.Show("x=500, y=1500");
-					else if (x == 2500 & y == 1900) MessageBox.Show("x=2500, y=1900");
-					else if (x == 3204 & y == 1940) { MessageBox.Show("All"); Browser.Quit(); Application.Exit(); }
-				}
-			}
+			jse.ExecuteScript("$('*:hidden').show();");
+			//jse.ExecuteScript("$('*:hidden').css('visibility, 'visible');");
+			//jse.ExecuteScript("$('*[type='hidden']').css('visibility', 'visible');");
+			//jse.ExecuteScript("$('*').each(function(i) {$(this).css('color', 'green')});"); //Работает
+			//jse.ExecuteScript("$('*').each(function(i) {$(this).css('visibility', 'visible')});");
+			//jse.ExecuteScript("$('div.egg').show();"); //Работает
+			//jse.ExecuteScript("$('div.popup-background').removeClass('is-hidden').addClass('is-visible');"); //Работает
+			//$('div.popup-background').hide(); //Работает
+			
+		}
 
 			/*
             IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
@@ -102,6 +96,23 @@ namespace Test2
                 i++;
             }
             */
+
+		/*
+		 for (x = 1; x <= 3204; x++)
+			{
+				for (y = 1; y <= 1940; y++)
+				{
+					string str = "(document.elementFromPoint(" + x + ", " + y + "))";
+					//MessageBox.Show(str);
+					string str2 = "$" + str + ".click();";
+					//MessageBox.Show(str2);
+					jse.ExecuteScript(str2);
+					//MessageBox.Show(str2);
+					if (x == 500 & y == 1500) MessageBox.Show("x=500, y=1500");
+					else if (x == 2500 & y == 1900) MessageBox.Show("x=2500, y=1900");
+					else if (x == 3204 & y == 1940) { MessageBox.Show("All"); Browser.Quit(); Application.Exit(); }
+				}
+		 * /
 
 			/*
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
@@ -157,7 +168,7 @@ namespace Test2
 			//Browser.Quit();
 			//Application.Exit();
 
-		}
+		
     }
 }
 
