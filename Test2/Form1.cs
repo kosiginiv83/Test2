@@ -134,12 +134,7 @@ namespace Test2
 			}
 			*/
 
-			/*
-			Actions builder = new Actions(Browser);
-					builder.MoveToElement(jse, x, y).Click();
-					//builder.Click();
-			*/
-
+			
 			/*
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
 			//IJavaScriptExecutor jse = (IJavaScriptExecutor)Browser;
