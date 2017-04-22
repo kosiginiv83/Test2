@@ -40,15 +40,18 @@ namespace Test2
             jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});");
 			jse.ExecuteScript("$('a:not(section.graphs a)').text('Заблокировано');");
 			jse.ExecuteScript("$('a:not(section.graphs a)').css('background-color', 'red');");
-			IWebElement element;
-			element = Browser.FindElement(By.TagName("body")).SendKeys(Keys.Chord(OpenQA.Selenium.Keys.Ctrl, OpenQA.Selenium.Keys.Plus));
-			//Browser.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.CONTROL, "+"));
-			//jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает (отключает ссылки) 
-			//jse.ExecuteScript("$('a:not(section.graphs a)').each(function(i) {$(this).css('color', 'green')});"); //Работает
+			//IWebElement element;
+
+            Browser.FindElement(By.TagName("body")).SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Add);
+
+            //element = Browser.FindElement(By.TagName("body")).SendKeys(Keys.Chord(OpenQA.Selenium.Keys.Ctrl, OpenQA.Selenium.Keys.Plus));
+            //Browser.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.CONTROL, "+"));
+            //jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает (отключает ссылки) 
+            //jse.ExecuteScript("$('a:not(section.graphs a)').each(function(i) {$(this).css('color', 'green')});"); //Работает
             // $('section.graphs a').css('color', 'green'); //Работает
             //jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});"); //Работает
-			// $("a[href*='news.yandex.ru']").css('color', 'green');
-		}
+            // $("a[href*='news.yandex.ru']").css('color', 'green');
+        }
 
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
