@@ -30,7 +30,7 @@ namespace Test2
 
         private void button1_Click(object sender, EventArgs e) //Открыть
         {
-            Browser = new OpenQA.Selenium.Chrome.ChromeDriver();
+            Browser = new ChromeDriver();
 
             Browser.Navigate().GoToUrl("http://blog.csssr.ru/qa-engineer/");
 			//Browser.Navigate().GoToUrl("https://google.com");
@@ -40,10 +40,8 @@ namespace Test2
             jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});");
 			jse.ExecuteScript("$('a:not(section.graphs a)').text('Заблокировано');");
 			jse.ExecuteScript("$('a:not(section.graphs a)').css('background-color', 'red');");
-			//IWebElement element;
 
-            Browser.FindElement(By.TagName("body")).SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Add);
-
+			
             //element = Browser.FindElement(By.TagName("body")).SendKeys(Keys.Chord(OpenQA.Selenium.Keys.Ctrl, OpenQA.Selenium.Keys.Plus));
             //Browser.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.CONTROL, "+"));
             //jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает (отключает ссылки) 
@@ -55,8 +53,19 @@ namespace Test2
 
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
-            IWebElement element;
-            element = Browser.FindElement(By.Id("gs_ok0")); element.Click(); //Для Google
+			//Browser.Manage().Window.Maximize();
+
+			//Browser.FindElement(By.TagName("body")).SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Subtract);
+			Actions builder = new Actions(Browser);
+			//builder.SendKeys((OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Subtract)).Perform();
+			//builder.SendKeys(System.Windows.Forms.Keys.OemMinus);
+			//builder.SendKeys(System.Windows.Forms.Keys.Subtract);
+			//builder.SendKeys(System.Windows.Forms.Keys.Zoom);
+			builder.SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Subtract).Perform();
+
+			/*
+			 * IWebElement element;
+			element = Browser.FindElement(By.Id("gs_ok0")); element.Click(); //Для Google
             //System.Threading.Thread.Sleep(3000);
             WebDriverWait ww = new WebDriverWait(Browser, TimeSpan.FromSeconds(10));
             IWebElement txt = ww.Until(ExpectedConditions.ElementIsVisible(By.Id("kbd"))); //Для Google
@@ -69,10 +78,10 @@ namespace Test2
             MessageBox.Show("Выполнено");
             Browser.Quit();
             Application.Exit();
+			*/
+		}
 
-        }
-
-        private void button3_Click(object sender, EventArgs e) //Выход
+		private void button3_Click(object sender, EventArgs e) //Выход
         {
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
