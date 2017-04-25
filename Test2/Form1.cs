@@ -28,16 +28,17 @@ namespace Test2
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e) //Открыть Chrome
+        private void button1_Click(object sender, EventArgs e) // Открыть Chrome
         {
             Browser = new ChromeDriver();
 			Browser.Navigate().GoToUrl("http://blog.csssr.ru/qa-engineer/");
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
 			jse.ExecuteScript("$('body').css({ transform:'scale(0.2)', transformOrigin:'0 0' })");
-			jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false}).text('Заблокировано').css('background-color', 'yellow');");
+			jse.ExecuteScript(@"$('a:not(section.graphs a)').click(function(){return false}).
+							text('Заблокировано').css('background-color', 'yellow');");
 		}
 
-        private void button2_Click(object sender, EventArgs e) //Прокликивание ссылок
+        private void button2_Click(object sender, EventArgs e) // Прокликивание ссылок
         {
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
 			int i = 0, x = 0;
@@ -65,7 +66,7 @@ namespace Test2
 		{
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
 			jse.ExecuteScript(@"var elem = $('div.popup-background');
-				elem.show().css({'background-color':'red', 'border-width':'20px', 'border-color':'green'});");
+				elem.show().css({'background-color':'red'});");
 		}
 
 		private void button5_Click(object sender, EventArgs e) // div.egg
@@ -83,7 +84,9 @@ namespace Test2
 
 		private void button7_Click(object sender, EventArgs e) // Сброс CSS 
 		{
-
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			Browser.Navigate().Refresh();
+			jse.ExecuteScript("$('body').css({ transform:'scale(0.2)', transformOrigin:'0 0' })");
 		}
 	}
 }
