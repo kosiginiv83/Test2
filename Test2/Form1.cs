@@ -37,31 +37,28 @@ namespace Test2
 			//Browser.Navigate().GoToUrl("https://www.yandex.ru");
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-            jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});");
-			jse.ExecuteScript("$('a:not(section.graphs a)').text('Заблокировано');");
-			jse.ExecuteScript("$('a:not(section.graphs a)').css('background-color', 'red');");
+			/*jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает
+			jse.ExecuteScript("$('a:not(section.graphs a)').text('Заблокировано');"); //Работает
+			jse.ExecuteScript("$('a:not(section.graphs a)').css('background-color', 'red');");*/ //Работает
 
-			
-            //element = Browser.FindElement(By.TagName("body")).SendKeys(Keys.Chord(OpenQA.Selenium.Keys.Ctrl, OpenQA.Selenium.Keys.Plus));
-            //Browser.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.CONTROL, "+"));
-            //jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает (отключает ссылки) 
-            //jse.ExecuteScript("$('a:not(section.graphs a)').each(function(i) {$(this).css('color', 'green')});"); //Работает
-            // $('section.graphs a').css('color', 'green'); //Работает
-            //jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});"); //Работает
-            // $("a[href*='news.yandex.ru']").css('color', 'green');
-        }
+			jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false}).text('Заблокировано').css('background-color', 'yellow');");
+
+			//element = Browser.FindElement(By.TagName("body")).SendKeys(Keys.Chord(OpenQA.Selenium.Keys.Ctrl, OpenQA.Selenium.Keys.Plus));
+			//Browser.findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.CONTROL, "+"));
+			//jse.ExecuteScript("$('a:not(section.graphs a)').click(function(){return false});"); //Работает (отключает ссылки) 
+			//jse.ExecuteScript("$('a:not(section.graphs a)').each(function(i) {$(this).css('color', 'green')});"); //Работает
+			// $('section.graphs a').css('color', 'green'); //Работает
+			//jse.ExecuteScript("$('a').each(function(i) {$(this).css('color', 'green')});"); //Работает
+			// $("a[href*='news.yandex.ru']").css('color', 'green');
+		}
 
         private void button2_Click(object sender, EventArgs e) //Поехали
         {
 			//Browser.Manage().Window.Maximize();
 
-			//Browser.FindElement(By.TagName("body")).SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Subtract);
-			Actions builder = new Actions(Browser);
-			//builder.SendKeys((OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Subtract)).Perform();
-			//builder.SendKeys(System.Windows.Forms.Keys.OemMinus);
-			//builder.SendKeys(System.Windows.Forms.Keys.Subtract);
-			//builder.SendKeys(System.Windows.Forms.Keys.Zoom);
-			builder.SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Subtract).Perform();
+			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+			//jse.ExecuteScript("$('html').keydown();");
+			
 
 			/*
 			 * IWebElement element;
@@ -85,29 +82,46 @@ namespace Test2
         {
 
 			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-			jse.ExecuteScript("$('*:hidden').show();");
-			//jse.ExecuteScript("$('*:hidden').css('visibility, 'visible');");
-			//jse.ExecuteScript("$('*[type='hidden']').css('visibility', 'visible');");
+			jse.ExecuteScript(@"var elem = $('*:hidden:not(div.popup-background)'); elem.show().
+				css({'background-color':'red', 'border-width':'20px', 'border-color':'green'});");
+			jse.ExecuteScript("$('body').css({ 'transform':'scale(0.20)', 'transformOrigin':'0 0' })");
+			//$('body').css({ zoom: 0.25, transform: 'scale(1)', transformOrigin: '0 0' })
+			//$('body').css({ transform: 'scale(0.25)'})
+			System.Threading.Thread.Sleep(1000);
+			int i = 0, x = 0;
+			while (i < 10)
+			{
+				while (x < 3) { jse.ExecuteScript("$('.graphs-details > a').click();"); x++; }
+				x = 0;
+				while (x < 3) { jse.ExecuteScript("$('.graphs-errors > a').click();"); x++; }
+				x = 0;
+				while (x < 3) { jse.ExecuteScript("$('.graphs-support > a').click();"); x++; }
+				x = 0;
+				while (x < 3) { jse.ExecuteScript("$('.graphs-files > a').click();"); x++; }
+				x = 0;
+				i++;
+			}
+			//$('*:hidden:not(div.popup-background, section.info > div)').show().css('background-color', 'red'); //Работает
+			//jse.ExecuteScript("$('*:hidden:not(div.popup-background)').show().css({'border-width':'20px', 'border-color':'green'});"); //Работает
+			//$('section.info > div').show().css('background-color', 'red'); //Работает
 			//jse.ExecuteScript("$('*').each(function(i) {$(this).css('color', 'green')});"); //Работает
-			//jse.ExecuteScript("$('*').each(function(i) {$(this).css('visibility', 'visible')});");
 			//jse.ExecuteScript("$('div.egg').show();"); //Работает
 			//jse.ExecuteScript("$('div.popup-background').removeClass('is-hidden').addClass('is-visible');"); //Работает
 			//$('div.popup-background').hide(); //Работает
-			
 		}
 
-			/*
-            IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-            int i = 0, x = 0;
-            while (i < 10)
-            {
-                while (x < 3) { jse.ExecuteScript("$('.graphs-details > a').click();"); x++; } x = 0;
-                while (x < 3) { jse.ExecuteScript("$('.graphs-errors > a').click();"); x++; } x = 0;
-                while (x < 3) { jse.ExecuteScript("$('.graphs-support > a').click();"); x++; }  x = 0;
-                while (x < 3) { jse.ExecuteScript("$('.graphs-files > a').click();"); x++; } x = 0;
-                i++;
-            }
-            */
+		/*
+		IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+		int i = 0, x = 0;
+		while (i < 10)
+		{
+			while (x < 3) { jse.ExecuteScript("$('.graphs-details > a').click();"); x++; } x = 0;
+			while (x < 3) { jse.ExecuteScript("$('.graphs-errors > a').click();"); x++; } x = 0;
+			while (x < 3) { jse.ExecuteScript("$('.graphs-support > a').click();"); x++; }  x = 0;
+			while (x < 3) { jse.ExecuteScript("$('.graphs-files > a').click();"); x++; } x = 0;
+			i++;
+		}
+		*/
 
 		/*
 		 for (x = 1; x <= 3204; x++)
@@ -146,37 +160,37 @@ namespace Test2
 			}
 			*/
 
-			
-			/*
-			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-			//IJavaScriptExecutor jse = (IJavaScriptExecutor)Browser;
-			jse.ExecuteScript("$(document.elementFromPoint(x, y)).click();");
-			*/
 
-			/*
-			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-			jse.ExecuteScript("$('.input__box i').click();");
-			*/
-			/*
-			IWebElement element;
-			element = Browser.FindElement(By.CssSelector(".input__box i")); element.Click(); //Для Yandex
-			*/
+		/*
+		IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+		//IJavaScriptExecutor jse = (IJavaScriptExecutor)Browser;
+		jse.ExecuteScript("$(document.elementFromPoint(x, y)).click();");
+		*/
 
-			/*
-			IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
-			//jse.ExecuteScript("alert('Тест JavaScript')");
-			//System.Threading.Thread.Sleep(1000);
-			jse.ExecuteScript("$('.home-logo__default').hide('slow')"); //Для Yandex
-			System.Threading.Thread.Sleep(500);
-			jse.ExecuteScript("$('.home-logo__default').show('slow')"); //Для Yandex
-			System.Threading.Thread.Sleep(500);
-			*/
+		/*
+		IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+		jse.ExecuteScript("$('.input__box i').click();");
+		*/
+		/*
+		IWebElement element;
+		element = Browser.FindElement(By.CssSelector(".input__box i")); element.Click(); //Для Yandex
+		*/
 
-			//Browser.Quit();
-			//Application.Exit();
+		/*
+		IJavaScriptExecutor jse = Browser as IJavaScriptExecutor;
+		//jse.ExecuteScript("alert('Тест JavaScript')");
+		//System.Threading.Thread.Sleep(1000);
+		jse.ExecuteScript("$('.home-logo__default').hide('slow')"); //Для Yandex
+		System.Threading.Thread.Sleep(500);
+		jse.ExecuteScript("$('.home-logo__default').show('slow')"); //Для Yandex
+		System.Threading.Thread.Sleep(500);
+		*/
 
-		
-    }
+		//Browser.Quit();
+		//Application.Exit();
+
+
+	}
 }
 
 
